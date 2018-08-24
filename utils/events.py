@@ -15,7 +15,7 @@ def handle_event(w3, event, address):
 	to be stored inside of a database.
 
 	param:
-	w3(string): ethereum node connection
+	w3(object): ethereum node connection
 	event(string): latest block hash
 	address(string): ethereum address
 
@@ -43,7 +43,7 @@ def log_loop(event_filter, poll_interval, address, w3):
 	event_filter(object): block filter object 
 	poll_interval(int): time check interval
 	address(string): ethereum address
-	w3(string): etehreum node connection
+	w3(object): etehreum node connection
 	"""
 	while True:
 		for event in event_filter.get_new_entries():

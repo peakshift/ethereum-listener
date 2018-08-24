@@ -7,11 +7,11 @@ Follow the steps below to clone and set up the project.
 2. `cd event-listener`
 
 
-To run the Flask app:
+To run the script:
 1. `pipenv install`
 
 2. `server= "server url" pipenv run python app.py`
-  - eg. `server="http://localhost:8080" python app.py`
+  - eg. `server="http://localhost:8080" pipenv run python app.py`
 
 In these steps pipenv is installing the necessary dependencies for the project and automatically creates a virtual environment for the project. Any other dependencies that you may add would be automatically added to the Pipfile.
 
