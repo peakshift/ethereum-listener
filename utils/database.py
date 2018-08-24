@@ -1,18 +1,16 @@
-import time
 from tinydb import TinyDB
 
 
 class Database:
 	def __init__(self):
 		self.db = TinyDB('./db.json')
-		self.time = time.time()
 
 	def insert(self, collection: str, data: dict):
 		try:
 			id: int = self.db.table(collection).insert(data)
 			return True
 		except:
-			return False
+			return None
 
 	def get(self, collection: str):
 		try:
@@ -29,7 +27,6 @@ class Database:
 			return None
 
 	def update(self, collection: str, data: dict, id: int):
-		data["updated"] = self.time
 		try:
 			self.db.table(collection).update(data, doc_ids=[id])
 			return True

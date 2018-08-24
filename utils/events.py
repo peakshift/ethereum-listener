@@ -1,8 +1,11 @@
 import time
+import decimal
+from web3 import Web3
 import utils.database as storage
 
 
 db = storage.Database()
+current_price = 277.00
 
 
 def handle_event(w3, event, address):
@@ -23,9 +26,10 @@ def handle_event(w3, event, address):
 		if txn['to'] == address:
 			response = store(txn)
 			if response is True:
-				print("Incoming Transaction for address was recorded.")
+				print(f"Incoming Transaction for address: {address} was recorded.")
 			else:
-				print("Transaction for address was not inserted.")
+				print(f"Transaction for address: {address} was not inserted.")
+				print(f"Please manually insert: {txn} \n")
 		else:
 			continue
 
@@ -67,6 +71,27 @@ def store(txn):
 		"gas_price": txn["gasPrice"], 
 		"block_number": txn["blockNumber"]
 	}
+
+	data["usd"] = calculate(data["value"], current_price)
 	response = db.insert('Transactions', data)
 
 	return response
+
+
+def calculate(value, current_price):
+	"""
+	This function calculates the 
+	USD equivalent of the transaction
+	value and returns it to be stored
+
+	param:
+	value(int): transaction value in Wei
+	current_price(float): ethereum market price in USD
+
+	return:
+	usd(float): USD equivalent
+	"""
+	value_ether = Web3.fromWei(value, 'ether')
+	usd = float(decimal.Decimal(value_ether)) * current_price
+
+	return "%.2f" %(usd)

@@ -1,10 +1,8 @@
 import os
-from flask import Flask, jsonify
 from web3 import Web3
 from utils.events import *
 
 
-app = Flask(__name__)
 url = os.environ['server']  # blockchain server
 w3 = Web3(Web3.HTTPProvider(url))
 

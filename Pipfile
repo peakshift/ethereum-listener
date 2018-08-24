@@ -1,14 +1,14 @@
 [[source]]
-verify_ssl = true
-name = "pypi"
 url = "https://pypi.org/simple"
-
-[dev-packages]
+name = "pypi"
+verify_ssl = true
 
 [packages]
-flask = "*"
-web3 = "*"
+behave = "*"
 tinydb = "*"
+"web3" = "*"
 
 [requires]
-python_version = "3.5"
+python_version = "3.6"
+
+[dev-packages]
