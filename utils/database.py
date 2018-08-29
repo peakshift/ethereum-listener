@@ -19,7 +19,7 @@ class Database:
 		except:
 			return None
 
-	def getbyid(self, collection: str, id: int):
+	def get_by_id(self, collection: str, id: int):
 		try:
 			project: dict = self.db.table(collection).get(doc_id=id)
 			return project

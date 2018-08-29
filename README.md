@@ -1,3 +1,9 @@
+# Prerequisites
+
+To decrease the hassle of installing different versions of dependencies for the project, it is recommended that you use pipenv. Pipenv ships with package management and virtual environment support. To install, just run the command below
+
+`pip install pipenv`
+
 # Getting Started
 
 Follow the steps below to clone and set up the project.
