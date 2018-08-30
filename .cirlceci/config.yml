@@ -9,7 +9,7 @@ jobs:
       - run:
           name: "install dependencies"
           command: |
-            pipenv install
+            pipenv install --skip-lock
       - run:
           name: "run behave tests"
           command: pipenv run behave
