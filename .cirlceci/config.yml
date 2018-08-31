@@ -8,13 +8,12 @@ jobs:
       - checkout
       - run:
           name: "install dependencies"
-          command: pipenv install --skip-lock
+          command: |
+            pipenv install --skip-lock
       - run:
           name: "run behave tests"
           command: pipenv run behave
       - run:
           name: "run pylint"
           command: |
-            pipenv run pylint app.py \
-            pipenv run pylint utils/database.py \
-            pipenv run pylint utils/events.py \
+            pipenv run pylint app.py utils/database.py utils/events.py 
